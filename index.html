@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio de Bienvenida</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #0d0d0d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        /* Contenedor principal */
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #0d0d0d;
+        }
+        label {
+            color: #0d0d0d;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #8FBFBF;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #648C8C;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #4a6c6c;
+        }
+        #welcome-message, #days-lived-message {
+            color: #0d0d0d;
+            margin-top: 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido!</h1>
+        <h2>Por favor, ingrese sus datos:</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre"><br>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido"><br>
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad"><br>
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento"><br>
+        <button onclick="mostrarMensaje()">Enviar</button>
+
+        <div id="welcome-message"></div>
+        <div id="days-lived-message"></div>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
+            const ciudad = document.getElementById("ciudad").value;
+            const fechaNacimiento = new Date(document.getElementById("fechaNacimiento").value);
+            const mensaje = `¡Bienvenido, ${nombre} ${apellido} de ${ciudad}!`;
+            document.getElementById("welcome-message").innerText = mensaje;
+            const hoy = new Date();
+            const diasVividos = Math.floor((hoy - fechaNacimiento) / (1000 * 60 * 60 * 24));
+            const mensajeDias = `Has vivido aproximadamente ${diasVividos} días.`;
+            document.getElementById("days-lived-message").innerText = mensajeDias;
+        }
+    </script>
+</body>
+</html>
